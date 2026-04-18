@@ -1,0 +1,50 @@
+# =========================
+# Frontend (Next.js)
+# =========================
+node_modules/
+frontend/node_modules/
+
+.next/
+.next/cache/
+out/
+build/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# env files
+.env*
+frontend/.env*
+
+# =========================
+# Backend (FastAPI)
+# =========================
+__pycache__/
+*.py[cod]
+*.sqlite3
+
+# virtual environments
+env/
+venv/
+.venv/
+
+# logs
+*.log
+
+# =========================
+# Misc / OS / Editor
+# =========================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# =========================
+# Vercel / Next extras
+# =========================
+.vercel
+*.tsbuildinfo
+next-env.d.ts
