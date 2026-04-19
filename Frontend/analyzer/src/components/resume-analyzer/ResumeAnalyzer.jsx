@@ -55,7 +55,7 @@ export default function ResumeAnalyzer() {
           {loading ? "Analyzing…" : "Analyze resume"}
         </button>
 
-        <AnalysisResult result={result} />
+        {result && <AnalysisResult result={result} />}
       </div>
     </main>
   );

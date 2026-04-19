@@ -10,18 +10,23 @@ export function useAnalyzer() {
     setError("");
     setResult(null);
 
-    const resume =
-      activeTab === "file" && file ? await file.text() : resumeText.trim();
-
-    if (!resume) { setError("Please upload a file or paste resume text."); return; }
-    if (!jobDescription.trim()) { setError("Please add a job description."); return; }
+    // validation only — no file.text() anymore, backend does extraction
+    if (activeTab === "file" && !file) {
+      setError("Please upload a file."); return;
+    }
+    if (activeTab === "paste" && !resumeText.trim()) {
+      setError("Please paste your resume text."); return;
+    }
+    if (!jobDescription.trim()) {
+      setError("Please add a job description."); return;
+    }
 
     setLoading(true);
     try {
-      const data = await analyzeResume({ resume, job_description: jobDescription });
+      const data = await analyzeResume({ file, resumeText, activeTab, jobDescription });
       setResult(data);
     } catch (err) {
-      setError(err.message);
+      setError("err.message");
     } finally {
       setLoading(false);
     }
